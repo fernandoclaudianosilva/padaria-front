@@ -1,0 +1,13 @@
+{% load static %}
+<a href="{{ recipe.get_absolute_url }}" class="recipe-card" data-reveal>
+    <figure>
+        {% if recipe.image %}
+            <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" loading="lazy">
+        {% else %}
+            <img src="{% static 'images/placeholder-recipe.svg' %}" alt="{{ recipe.title }}" loading="lazy">
+        {% endif %}
+    </figure>
+    <h3>{{ recipe.title }}</h3>
+    <p class="desc muted">{{ recipe.description }}</p>
+    <span class="view-link">Read More</span>
+</a>

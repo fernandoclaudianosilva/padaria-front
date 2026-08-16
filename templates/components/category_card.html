@@ -1,0 +1,12 @@
+{% load static %}
+<a href="{{ category.get_absolute_url }}" class="category-card" data-reveal>
+    {% if category.image %}
+        <img src="{{ category.image.url }}" alt="{{ category.name }}" loading="lazy">
+    {% else %}
+        <img src="{% static 'images/placeholder-category.svg' %}" alt="{{ category.name }}" loading="lazy">
+    {% endif %}
+    <div class="category-card-caption">
+        <h3>{{ category.name }}</h3>
+        <span>Shop {{ category.name }}</span>
+    </div>
+</a>

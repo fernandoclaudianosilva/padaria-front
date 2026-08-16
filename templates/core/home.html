@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero" style="background-image:url('{% static 'images/placeholder-hero.svg' %}');">
+    <div class="hero-content">
+        <span class="hero-eyebrow">Since 1993 &middot; Massachusetts</span>
+        <h1>GERARDO'S<br>Italian Bakery</h1>
+        <p class="hero-subline">Authentic Italian baking, made with passion.</p>
+        <div class="hero-ctas">
+            <a href="{% url 'core:story' %}" class="btn btn--outline-light">Discover Our Bakery</a>
+            <a href="{% url 'shop:product_list' %}" class="btn btn--primary">Shop Our Baked Goods</a>
+        </div>
+    </div>
+</section>
+
+<section class="known-for section" data-reveal>
+    <div class="container">
+        <blockquote>&ldquo;We're a big bakery with a small bakery mentality.&rdquo;</blockquote>
+        <ul class="known-for-list">
+            <li>Wedding Cakes</li>
+            <li>Italian Cookies</li>
+            <li>Cannoli</li>
+            <li>Pastries</li>
+            <li>Coffee</li>
+            <li>&amp; much more</li>
+        </ul>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Explore</span>
+            <h2>What We Bake</h2>
+            <p class="lede">From daily bread to wedding centerpieces — every category, crafted the traditional way.</p>
+        </div>
+        <div class="grid grid-4">
+            {% for category in categories %}
+                {% include 'components/category_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="split-band" data-reveal>
+    <figure>
+        <img src="{% static 'images/placeholder-hero.svg' %}" alt="Gerardo's cakes">
+    </figure>
+    <div class="copy">
+        <span class="eyebrow">Cakes</span>
+        <h2>A cake for every celebration.</h2>
+        <p class="lede">Chocolate. Vanilla. Gold &amp; light lemon. Marble. Carrot. Red velvet. Tiramisu. Rum cake. Every flavor is made the way Gerardo taught us — from scratch, with care.</p>
+        <a href="{% url 'shop:category_detail' 'cakes' %}" class="btn">Shop Cakes</a>
+    </div>
+</section>
+
+<section class="split-band reverse" data-reveal>
+    <figure>
+        <img src="{% static 'images/placeholder-hero.svg' %}" alt="Cannoli at Gerardo's">
+    </figure>
+    <div class="copy">
+        <span class="eyebrow">Cannoli</span>
+        <h2>A taste of Italy.</h2>
+        <p class="lede">Crisp shells, filled to order with sweet ricotta and your choice of topping — a Gerardo's signature since day one.</p>
+        <a href="{% url 'shop:category_detail' 'cannoli' %}" class="btn">Discover Cannoli</a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Italian Cookies</span>
+            <h2>Made to share.</h2>
+        </div>
+        <div class="grid grid-4">
+            {% for product in best_sellers %}
+                {% include 'components/product_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="wedding-band section" data-reveal>
+    <div class="container">
+        <span class="eyebrow" style="color:var(--bread);">Weddings</span>
+        <h2>Your celebration, our craft.</h2>
+        <p class="lede">Recognized as Best of New England by The Knot in 2007, 2008, 2009 and 2010, our wedding cakes are designed and tasted together — every detail personalized for your day.</p>
+        <a href="{% url 'core:wedding_cakes' %}" class="btn btn--outline-light">Explore Wedding Cakes</a>
+    </div>
+</section>
+
+{% if featured_products %}
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Bakery Favorites</span>
+            <h2>Featured This Week</h2>
+        </div>
+        <div class="grid grid-4">
+            {% for product in featured_products %}
+                {% include 'components/product_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="section" style="background:var(--cream);">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">From Our Kitchen</span>
+            <h2>Recipes, stories &amp; inspiration.</h2>
+        </div>
+        <div class="grid grid-3">
+            {% for recipe in recipes %}
+                {% include 'components/recipe_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Visit Us</span>
+            <h2>Three Massachusetts Locations</h2>
+        </div>
+        <div class="grid grid-3">
+            {% for location in locations %}
+                {% include 'components/location_card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section section--tight" data-reveal>
+    <div class="container text-center">
+        <span class="eyebrow">Follow Along</span>
+        <h2>@gerardositalianbakery</h2>
+        <div class="instagram-grid" style="margin-top:32px;">
+            {% for i in "12345" %}
+                <img src="{% static 'images/placeholder-hero.svg' %}" alt="Gerardo's Italian Bakery on Instagram">
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

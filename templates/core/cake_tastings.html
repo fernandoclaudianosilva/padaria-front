@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section" style="padding-bottom:0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Weddings &amp; Events</span>
+            <h1>Cake Tastings</h1>
+            <p class="lede">Sample your favorite flavors in-store — individual slices, tasted on-site or taken home.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Tasting Flavors</span>
+            <h2>What You Can Sample</h2>
+        </div>
+        <div class="grid grid-3">
+            {% for flavor in flavors %}
+                <div style="border:1px solid var(--border); padding:24px;" data-reveal>
+                    <h3 style="font-size:1.2rem;">{{ flavor.name }}</h3>
+                    <p class="muted">{{ flavor.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section section--tight" style="background:var(--cream);">
+    <div class="container" style="max-width:640px;">
+        <h3>Request a Tasting</h3>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="{{ form.name.id_for_label }}">Name</label>
+                    {{ form.name }}
+                    {{ form.name.errors }}
+                </div>
+                <div class="form-field">
+                    <label for="{{ form.email.id_for_label }}">Email</label>
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="{{ form.phone.id_for_label }}">Phone</label>
+                    {{ form.phone }}
+                </div>
+                <div class="form-field">
+                    <label for="{{ form.preferred_date.id_for_label }}">Preferred Date</label>
+                    {{ form.preferred_date }}
+                </div>
+            </div>
+            <div class="form-field">
+                <label for="{{ form.guests.id_for_label }}">Number of Guests</label>
+                {{ form.guests }}
+            </div>
+            <div class="form-field">
+                <label for="{{ form.message.id_for_label }}">Message</label>
+                {{ form.message }}
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">Request a Tasting</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

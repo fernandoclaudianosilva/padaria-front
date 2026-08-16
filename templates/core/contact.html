@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section" style="padding-bottom:0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Contact</span>
+            <h1>Come Visit Us</h1>
+            <p class="lede">We'd love to see you.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="display:grid; grid-template-columns: 1fr 1fr; gap:60px;">
+        <div>
+            <h3>Send Us a Message</h3>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="{{ form.name.id_for_label }}">Name</label>
+                        {{ form.name }}
+                        {{ form.name.errors }}
+                    </div>
+                    <div class="form-field">
+                        <label for="{{ form.email.id_for_label }}">Email</label>
+                        {{ form.email }}
+                        {{ form.email.errors }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="{{ form.phone.id_for_label }}">Phone</label>
+                        {{ form.phone }}
+                    </div>
+                    <div class="form-field">
+                        <label for="{{ form.subject.id_for_label }}">Subject</label>
+                        {{ form.subject }}
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="{{ form.message.id_for_label }}">Message</label>
+                    {{ form.message }}
+                    {{ form.message.errors }}
+                </div>
+                <button type="submit" class="btn btn--primary">Send Message</button>
+            </form>
+        </div>
+        <div>
+            <h3>Our Bakeries</h3>
+            <div style="display:grid; gap:20px;">
+                {% for location in locations %}
+                    <div style="border:1px solid var(--border); padding:20px;">
+                        <strong>{{ location.name }}</strong>
+                        <p class="muted" style="margin:6px 0;">{{ location.address_line }}, {{ location.city }}, {{ location.state }}</p>
+                        <p class="muted" style="margin:0;">{{ location.phone }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

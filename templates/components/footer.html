@@ -1,0 +1,68 @@
+{% load static %}
+<section class="newsletter-band section--tight" data-reveal>
+    <div class="container">
+        <span class="eyebrow">Stay in the know</span>
+        <h2>Join our mailing list</h2>
+        <p class="lede" style="margin:0 auto;">Bakery news, special events and seasonal treats — straight to your inbox.</p>
+        <form action="{% url 'core:newsletter_signup' %}" method="post">
+            {% csrf_token %}
+            {{ newsletter_form.email }}
+            <button type="submit" class="btn btn--primary">Sign Up</button>
+        </form>
+    </div>
+</section>
+
+<footer style="background:var(--black); color:var(--warm-white); padding: 64px 0 28px;">
+    <div class="container">
+        <div class="grid grid-4" style="margin-bottom: 48px;">
+            <div>
+                <h4 style="text-transform:uppercase; font-size:0.72rem; letter-spacing:0.14em; font-family:var(--font-body); margin-bottom:18px; color:var(--bread);">Shop</h4>
+                <ul style="list-style:none; padding:0; margin:0; display:grid; gap:10px; font-size:0.88rem; color:rgba(251,249,244,0.8);">
+                    <li><a href="{% url 'shop:category_detail' 'breads' %}">Breads</a></li>
+                    <li><a href="{% url 'shop:category_detail' 'cakes' %}">Cakes</a></li>
+                    <li><a href="{% url 'shop:category_detail' 'pastries' %}">Pastries</a></li>
+                    <li><a href="{% url 'shop:category_detail' 'cannoli' %}">Cannoli</a></li>
+                    <li><a href="{% url 'shop:category_detail' 'cookies' %}">Cookies</a></li>
+                    <li><a href="{% url 'shop:category_detail' 'wedding-cakes' %}">Wedding Cakes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="text-transform:uppercase; font-size:0.72rem; letter-spacing:0.14em; font-family:var(--font-body); margin-bottom:18px; color:var(--bread);">About</h4>
+                <ul style="list-style:none; padding:0; margin:0; display:grid; gap:10px; font-size:0.88rem; color:rgba(251,249,244,0.8);">
+                    <li><a href="{% url 'core:story' %}">Our Story</a></li>
+                    <li><a href="{% url 'core:philosophy' %}">Our Philosophy</a></li>
+                    <li><a href="{% url 'core:locations' %}">Locations</a></li>
+                    <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="text-transform:uppercase; font-size:0.72rem; letter-spacing:0.14em; font-family:var(--font-body); margin-bottom:18px; color:var(--bread);">Services</h4>
+                <ul style="list-style:none; padding:0; margin:0; display:grid; gap:10px; font-size:0.88rem; color:rgba(251,249,244,0.8);">
+                    <li><a href="{% url 'core:cake_tastings' %}">Cake Tastings</a></li>
+                    <li><a href="{% url 'core:wedding_cakes' %}">Wedding Cakes</a></li>
+                    <li><a href="{% url 'shop:category_detail' 'special-events' %}">Special Events</a></li>
+                    <li><a href="{% url 'core:order_online' %}">Online Ordering</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="text-transform:uppercase; font-size:0.72rem; letter-spacing:0.14em; font-family:var(--font-body); margin-bottom:18px; color:var(--bread);">Information</h4>
+                <ul style="list-style:none; padding:0; margin:0; display:grid; gap:10px; font-size:0.88rem; color:rgba(251,249,244,0.8);">
+                    <li><a href="{% url 'core:contact' %}">FAQ</a></li>
+                    <li><a href="{% url 'core:contact' %}">Privacy</a></li>
+                    <li><a href="{% url 'core:contact' %}">Terms</a></li>
+                    <li><a href="{% url 'core:contact' %}">Shipping</a></li>
+                    <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; border-top:1px solid rgba(251,249,244,0.15); padding-top:24px;">
+            <span style="font-family:var(--font-display); font-size:1.2rem;">GERARDO'S ITALIAN BAKERY</span>
+            <div style="display:flex; gap:18px; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em;">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
+            </div>
+            <span style="font-size:0.78rem; color:rgba(251,249,244,0.55);">&copy; {% now "Y" %} Gerardo's Italian Bakery. All rights reserved.</span>
+        </div>
+    </div>
+</footer>

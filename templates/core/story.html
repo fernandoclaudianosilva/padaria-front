@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="hero" style="min-height:52vh; background-image:url('{% static 'images/placeholder-hero.svg' %}');">
+    <div class="hero-content">
+        <span class="hero-eyebrow">Our Story</span>
+        <h1>The Gerardo's Story</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="max-width:760px;">
+        <p class="lede" style="font-size:1.2rem; color:var(--black);">
+            Gerardo's Italian Bakery was founded in 1993 by Gerardo Sarli.
+        </p>
+        <p>
+            Gerardo learned his craft as an apprentice under traditional master bakers, mastering
+            the techniques behind Italian breads, pastries and wedding cakes long before opening
+            his own shop. Encouraged by his mother, he eventually set out to build a bakery of his
+            own — one rooted in the family recipes carried over from Italy.
+        </p>
+        <p>
+            More than thirty years later, that same philosophy still shapes every loaf, pastry and
+            cake that leaves our ovens: quality ingredients, traditional technique, and recipes
+            passed down through family.
+        </p>
+    </div>
+</section>
+
+<section class="section section--tight" style="background:var(--cream);">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Timeline</span>
+            <h2>From One Oven to Three Bakeries</h2>
+        </div>
+        <div class="grid grid-4" style="text-align:center;">
+            <div data-reveal>
+                <h3 style="color:var(--red);">1993</h3>
+                <p class="muted">The beginning</p>
+            </div>
+            <div data-reveal>
+                <h3 style="font-size:1.1rem;">Learning the Craft</h3>
+                <p class="muted">Apprenticing under master bakers</p>
+            </div>
+            <div data-reveal>
+                <h3 style="font-size:1.1rem;">Family Recipes</h3>
+                <p class="muted">Brought over from Italy</p>
+            </div>
+            <div data-reveal>
+                <h3 style="font-size:1.1rem;">Three Locations</h3>
+                <p class="muted">West Boylston, Marlborough &amp; Shrewsbury, MA</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section text-center">
+    <div class="container">
+        <a href="{% url 'core:philosophy' %}" class="btn">Our Philosophy</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero" style="min-height:60vh; background-image:url('{% static 'images/placeholder-hero.svg' %}');">
+    <div class="hero-content">
+        <span class="hero-eyebrow">Weddings</span>
+        <h1>Your Celebration, Our Craft</h1>
+        <div class="hero-ctas">
+            <a href="{% url 'core:cake_tastings' %}" class="btn btn--primary">Book a Cake Tasting</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container" style="max-width:760px;">
+        <p class="lede" style="font-size:1.15rem; color:var(--black);">
+            Our wedding cakes were recognized as "Best of New England" by The Knot in 2007,
+            2008, 2009 and 2010 — a tradition of craft, design and flavor we carry into every
+            cake we build today.
+        </p>
+        <p>
+            Every wedding cake begins with a conversation: your flavors, your design, your
+            event. From there, our cake team guides you through tasting, personalization and
+            final design — so the cake at the center of your celebration feels entirely yours.
+        </p>
+    </div>
+</section>
+
+<section class="section section--tight" style="background:var(--cream);">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Flavors</span>
+            <h2>Choose Your Cake &amp; Filling</h2>
+        </div>
+        <div class="grid grid-4">
+            {% for flavor in flavors %}
+                <div style="border-bottom:1px solid var(--border); padding-bottom:16px;" data-reveal>
+                    <h3 style="font-size:1.1rem;">{{ flavor.name }}</h3>
+                    <p class="muted" style="font-size:0.88rem;">{{ flavor.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section text-center">
+    <div class="container">
+        <h2>Ready to Start Planning?</h2>
+        <a href="{% url 'core:cake_tastings' %}" class="btn btn--primary">Explore Wedding Cakes</a>
+    </div>
+</section>
+{% endblock %}

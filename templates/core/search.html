@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Search</span>
+            <h1>{% if query %}Results for &ldquo;{{ query }}&rdquo;{% else %}Search Our Bakery{% endif %}</h1>
+            {% if query %}<p class="lede">{{ result_count }} result{{ result_count|pluralize }} found.</p>{% endif %}
+        </div>
+
+        <form action="{% url 'core:search' %}" method="get" style="max-width:480px; display:flex; gap:12px; margin-bottom:48px;">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search our bakery..." class="form-field" style="flex:1; padding:13px 14px; border:1px solid var(--border); background:var(--warm-white);">
+            <button type="submit" class="btn btn--primary">Search</button>
+        </form>
+
+        {% if query %}
+            {% if products %}
+                <h3>Products</h3>
+                <div class="grid grid-4" style="margin-bottom:48px;">
+                    {% for product in products %}{% include 'components/product_card.html' %}{% endfor %}
+                </div>
+            {% endif %}
+            {% if categories %}
+                <h3>Categories</h3>
+                <div class="grid grid-4" style="margin-bottom:48px;">
+                    {% for category in categories %}{% include 'components/category_card.html' %}{% endfor %}
+                </div>
+            {% endif %}
+            {% if recipes %}
+                <h3>Recipes &amp; Stories</h3>
+                <div class="grid grid-3">
+                    {% for recipe in recipes %}{% include 'components/recipe_card.html' %}{% endfor %}
+                </div>
+            {% endif %}
+            {% if result_count == 0 %}
+                <div class="empty-state">No results found. Try a different search term.</div>
+            {% endif %}
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

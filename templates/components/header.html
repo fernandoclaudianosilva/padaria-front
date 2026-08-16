@@ -1,0 +1,63 @@
+{% load static %}
+<header class="site-header">
+    <div class="header-top">
+        <button class="menu-toggle" data-menu-toggle aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+
+        <a href="{% url 'core:home' %}" class="logo">
+            <span class="logo-mark">GERARDO'S</span>
+            <span class="logo-sub">Italian Bakery</span>
+        </a>
+
+        <div class="header-actions">
+            <a href="#" data-search-toggle>SEARCH</a>
+            <a href="{% url 'admin:index' %}" style="display:none;">ACCOUNT</a>
+            <a href="{% url 'cart:cart_detail' %}">
+                CART
+                {% if cart|length %}<span class="cart-count">{{ cart|length }}</span>{% endif %}
+            </a>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="{% url 'shop:product_list' %}">Shop</a></li>
+            <li><a href="{% url 'shop:category_detail' 'cakes' %}">Cakes</a></li>
+            <li><a href="{% url 'shop:category_detail' 'pastries' %}">Pastries</a></li>
+            <li><a href="{% url 'shop:category_detail' 'cannoli' %}">Cannoli &amp; Cookies</a></li>
+            <li><a href="{% url 'shop:category_detail' 'breads' %}">Breads</a></li>
+            <li><a href="{% url 'core:wedding_cakes' %}">Weddings</a></li>
+            <li><a href="{% url 'core:story' %}">Our Story</a></li>
+            <li><a href="{% url 'core:locations' %}">Locations</a></li>
+            <li><a href="{% url 'core:contact' %}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="search-bar" data-search-bar>
+        <form action="{% url 'core:search' %}" method="get">
+            <input type="text" name="q" placeholder="Search our bakery..." data-search-input required>
+            <button type="submit" class="btn btn--small">Search</button>
+        </form>
+    </div>
+</header>
+
+<div class="mobile-nav" data-mobile-nav>
+    <button class="mobile-nav-close" data-mobile-nav-close aria-label="Close menu">&times;</button>
+    <div class="logo">
+        <span class="logo-mark">GERARDO'S</span>
+        <span class="logo-sub">Italian Bakery</span>
+    </div>
+    <ul>
+        <li><a href="{% url 'shop:product_list' %}">Shop</a></li>
+        <li><a href="{% url 'shop:category_detail' 'cakes' %}">Cakes</a></li>
+        <li><a href="{% url 'shop:category_detail' 'pastries' %}">Pastries</a></li>
+        <li><a href="{% url 'shop:category_detail' 'cannoli' %}">Cannoli &amp; Cookies</a></li>
+        <li><a href="{% url 'shop:category_detail' 'breads' %}">Breads</a></li>
+        <li><a href="{% url 'core:wedding_cakes' %}">Weddings</a></li>
+        <li><a href="{% url 'core:story' %}">Our Story</a></li>
+        <li><a href="{% url 'core:locations' %}">Locations</a></li>
+        <li><a href="{% url 'core:contact' %}">Contact</a></li>
+        <li><a href="{% url 'cart:cart_detail' %}">Cart</a></li>
+    </ul>
+</div>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section" style="padding-bottom:0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Visit Us</span>
+            <h1>Locations</h1>
+            <p class="lede">Three Massachusetts bakeries, each baking fresh every day.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="grid grid-3">
+            {% for location in locations %}
+                {% include 'components/location_card.html' %}
+            {% empty %}
+                <p class="muted">Location details are being updated — please check back soon.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section section--tight text-center" style="background:var(--cream);">
+    <div class="container">
+        <span class="eyebrow">Order Online</span>
+        <h2>Get Gerardo's delivered.</h2>
+        <p class="lede" style="margin:0 auto 24px;">Online ordering is currently available for our West Boylston and Marlborough locations.</p>
+        <a href="{% url 'core:order_online' %}" class="btn btn--primary">Order Online</a>
+    </div>
+</section>
+{% endblock %}

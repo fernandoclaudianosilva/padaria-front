@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+    <div class="container success-box">
+        <span class="eyebrow">Order Received</span>
+        <h1>Thank you, {{ order.name }}!</h1>
+        <p class="lede" style="margin:0 auto 24px;">
+            Your order totaling ${{ order.total }} has been received. A confirmation will be sent to {{ order.email }}.
+        </p>
+        <a href="{% url 'shop:product_list' %}" class="btn btn--primary">Continue Shopping</a>
+    </div>
+</section>
+{% endblock %}

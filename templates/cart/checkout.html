@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">Checkout</span>
+            <h1>Checkout</h1>
+        </div>
+
+        <div class="checkout-layout">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="{{ form.first_name.id_for_label }}">First Name</label>
+                        {{ form.first_name }}
+                        {{ form.first_name.errors }}
+                    </div>
+                    <div class="form-field">
+                        <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+                        {{ form.last_name }}
+                        {{ form.last_name.errors }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="{{ form.email.id_for_label }}">Email</label>
+                        {{ form.email }}
+                        {{ form.email.errors }}
+                    </div>
+                    <div class="form-field">
+                        <label for="{{ form.phone.id_for_label }}">Phone</label>
+                        {{ form.phone }}
+                        {{ form.phone.errors }}
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="{{ form.address.id_for_label }}">Address</label>
+                    {{ form.address }}
+                    {{ form.address.errors }}
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="{{ form.city.id_for_label }}">City</label>
+                        {{ form.city }}
+                    </div>
+                    <div class="form-field">
+                        <label for="{{ form.state.id_for_label }}">State</label>
+                        {{ form.state }}
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="{{ form.zip_code.id_for_label }}">ZIP Code</label>
+                    {{ form.zip_code }}
+                    {{ form.zip_code.errors }}
+                </div>
+                <div class="form-field">
+                    <label for="{{ form.notes.id_for_label }}">Notes</label>
+                    {{ form.notes }}
+                </div>
+                <button type="submit" class="btn btn--primary btn--full">Place Order</button>
+                <p class="muted" style="font-size:0.8rem; margin-top:14px;">
+                    Payment processing is not yet enabled in this build — the checkout is wired
+                    to accept a Stripe, PayPal or Mercado Pago integration when you're ready to go live.
+                </p>
+            </form>
+
+            <aside class="order-summary">
+                <h3>Order Summary</h3>
+                {% for item in cart %}
+                    <div class="order-summary-item">
+                        <span>{{ item.product.name }} &times; {{ item.quantity }}</span>
+                        <span>${{ item.total_price }}</span>
+                    </div>
+                {% endfor %}
+                <div class="rule" style="margin:16px 0;"></div>
+                <div class="order-summary-item" style="font-weight:600;">
+                    <span>Total</span>
+                    <span>${{ cart.get_total_price }}</span>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+{% endblock %}

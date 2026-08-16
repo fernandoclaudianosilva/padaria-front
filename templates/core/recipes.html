@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section" style="padding-bottom:0;">
+    <div class="container">
+        <div class="section-header">
+            <span class="eyebrow">From Our Kitchen</span>
+            <h1>Recipes, Stories &amp; Inspiration</h1>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="grid grid-3">
+            {% for recipe in recipes %}
+                {% include 'components/recipe_card.html' %}
+            {% empty %}
+                <p class="muted">New stories from our kitchen are on the way — check back soon.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
