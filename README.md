@@ -1,3 +1,4 @@
+
 # Gerardo's Italian Bakery — Full Stack Website
 
 A full Django e-commerce website for **Gerardo's Italian Bakery**. The content, products,
@@ -187,3 +188,6 @@ Business details (locations, phone numbers, hours, cake flavors, founding story)
 Gerardo's Italian Bakery's own public information and are stored as data in the `core` app
 models — not hard-coded in templates — so they can be updated at any time from the Django
 Admin without touching code.
+=======
+# padaria-front
+ b7fe708b4c4a1399b614eabb5acae3c4dbe5d226
