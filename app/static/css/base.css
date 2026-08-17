@@ -1,0 +1,97 @@
+:root {
+    --bg-color: #faf9f6;
+    --text-color: #2c251f;
+    --accent-color: #d8c3a5;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+h1, h2, h3, .brand-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+/* Cabeçalho alinhado à esquerda */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.5rem 3rem;
+    gap: 4rem;
+    /* Faz o menu grudar no topo em páginas normais */
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
+    z-index: 1000;
+    transition: all 0.4s ease-in-out;
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* Regras exclusivas para a Landing Page (quando tem fundo de imagem) */
+header.transparent-header {
+    position: fixed; /* Fica por cima da imagem */
+    width: 100%;
+    background-color: transparent; /* Fundo transparente inicialmente */
+    border-bottom: none;
+    box-sizing: border-box; /* Garante que o padding não quebre a largura */
+}
+
+/* Quando o usuário rola a página, ele ganha a cor de fundo e a borda novamente */
+header.transparent-header.scrolled {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid #eaeaea;
+    padding: 1rem 3rem; /* Fica ligeiramente mais fino (elegante) */
+}
+
+/* Container do Logo */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 0;
+}
+
+/* Tamanho da Imagem do Logo */
+.brand-logo img {
+    height: 60px; /* Ajuste este valor conforme a necessidade do seu logo */
+    width: auto;  /* Mantém a proporção da imagem */
+    object-fit: contain;
+}
+/* Container de navegação */
+nav {
+    display: flex;
+    gap: 2rem; /* Espaço entre cada link do menu */
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    padding-bottom: 5px;
+    margin: 0; /* Margem zerada, pois o 'gap' acima já faz o espaçamento */
+    transition: border-bottom 0.3s;
+}
+
+nav a:hover {
+    border-bottom: 1px solid var(--text-color);
+}
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #f4f1ea;
+    font-size: 0.9rem;
+    margin-top: 4rem;
+}

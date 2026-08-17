@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- Dizemos ao base.html para usar o menu transparente nesta página -->
+{% block header_class %}transparent-header{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+
+{% block hero %}
+<!-- Container do Carrossel de Tela Cheia -->
+<section class="carousel-container">
+    <!-- Overlay escuro para garantir que o menu e o texto fiquem legíveis -->
+    <div class="carousel-overlay-bg"></div>
+
+    <!-- Imagens do Carrossel -->
+    <!-- Nota: Salve 3 imagens grandes (ex: 1920x1080) na pasta static/images com estes nomes -->
+    <div class="slide active" style="background-image: url('{% static 'images/slide1.jpg' %}');"></div>
+    <div class="slide" style="background-image: url('{% static 'images/slide2.jpg' %}');"></div>
+    <div class="slide" style="background-image: url('{% static 'images/slide3.jpg' %}');"></div>
+
+    <!-- Texto Alinhado à Esquerda -->
+    <div class="carousel-content">
+        <h1 class="carousel-title">Gerardo's Italian Bakery</h1>
+        <!--<p class="carousel-subtitle">Artisan Baking. Timeless Tradition.</p>-->
+        <a href="{% url 'product_list' %}" class="btn-primary">Shop Now</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="story-section">
+    <h2>The Taste of Heritage</h2>
+    <p>
+        At Gerardo's Bakery, we believe that great bread takes time. Our signature sourdough starter has been nurtured for decades, 
+        giving our loaves their distinctive crust, rich aroma, and deep flavor. Every morning, our bakers craft each piece by hand, 
+        honoring the slow, deliberate art of traditional French baking.
+    </p>
+</section>
+
+<h2 class="featured-title">Signature Creations</h2>
+<div class="product-grid">
+    {% for product in featured_products %}
+        <a href="{% url 'product_list' %}" class="product-card">
+            <div class="image-placeholder">
+                Image: {{ product.name }}
+            </div>
+            <h3 class="product-name">{{ product.name }}</h3>
+            <p class="product-price">$ {{ product.price }}</p>
+        </a>
+    {% empty %}
+        <p style="text-align: center; width: 100%; grid-column: 1 / -1;">More creations coming soon.</p>
+    {% endfor %}
+</div>
+
+<!-- Lógica JavaScript do Carrossel -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        // Troca a imagem a cada 5 segundos (5000 milissegundos)
+        setInterval(function() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000); 
+    });
+</script>
+{% endblock %}

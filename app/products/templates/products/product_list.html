@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Our Breads & Pastries</h1>
+
+<div class="product-grid">
+    {% for product in products %}
+        <div class="product-card">
+            <div class="image-placeholder">
+                Image: {{ product.name }}
+            </div>
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-price">$ {{ product.price }}</p>
+            <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+    {% empty %}
+        <p style="text-align: center; width: 100%; grid-column: 1 / -1;">No products available at the moment.</p>
+    {% endfor %}
+</div>
+{% endblock %}

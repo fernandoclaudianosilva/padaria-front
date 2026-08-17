@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerardo's Bakery</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Adicionamos o ID main-header e o bloco de classe para a transparência -->
+    <header id="main-header" class="{% block header_class %}{% endblock %}">
+        <a href="/" class="brand-logo">
+            <img src="{% static 'images/gerardos_logo.png' %}" alt="Gerardo's Bakery Logo">
+        </a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="{% url 'product_list' %}">Shop</a>
+            <a href="#">Our Story</a>
+        </nav>
+    </header>
+
+    <!-- Área nova para conteúdos de tela inteira (como o carrossel) -->
+    {% block hero %}{% endblock %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Gerardo's Bakery. Artisanal bread baked with love.</p>
+    </footer>
+
+    <!-- Script para mudar a cor do cabeçalho ao rolar a página -->
+    <script>
+        window.addEventListener('scroll', function() {
+            var header = document.getElementById('main-header');
+            // Se rolar mais de 50 pixels para baixo, adiciona o fundo sólido
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

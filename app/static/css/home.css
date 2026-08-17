@@ -1,0 +1,153 @@
+/* Container ocupa 100% da altura e largura da tela (Viewport Height/Width) */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+/* O fundo transparente escuro garante que textos e navbar fiquem legíveis em imagens claras */
+.carousel-overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.4) 100%);
+    z-index: 5;
+}
+
+/* Estilo individual de cada imagem (Slide) */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Invisível por padrão */
+    transition: opacity 1.5s ease-in-out; /* Efeito de transição suave */
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1; /* Slide atual fica visível */
+}
+
+/* Posicionamento do Texto no meio à esquerda */
+.carousel-content {
+    position: absolute;
+    top: 50%;
+    left: 8%; /* Espaço em relação ao canto esquerdo */
+    transform: translateY(-50%); /* Centraliza perfeitamente no eixo Y */
+    z-index: 10;
+    color: #ffffff; /* Texto branco para contrastar com o fundo */
+    max-width: 600px;
+}
+
+.carousel-title {
+    font-size: 4.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para garantir legibilidade */
+}
+
+.carousel-subtitle {
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajuste do botão para o carrossel escuro */
+.carousel-content .btn-primary {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    font-weight: bold;
+    border: none;
+}
+
+.carousel-content .btn-primary:hover {
+    background-color: #faf9f6;
+}
+
+/* Restante do CSS do home.css que você já tinha */
+.story-section {
+    text-align: center;
+    max-width: 800px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+}
+
+.story-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.story-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.featured-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.hero-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 12px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #4a3f35;
+}
+
+.story-section {
+    text-align: center;
+    max-width: 800px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+}
+
+.story-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.story-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.featured-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
